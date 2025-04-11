@@ -1,11 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
 from django.core.mail import send_mail
 from django.conf import settings
 
-from .models import Feedback
-from .serializers import FeedbackSerializer
+from .models import Feedback, City
+from .serializers import FeedbackSerializer, CitySerializer
+
 """
 “Форма обратной связи” через API:
 """
@@ -25,5 +26,6 @@ class FeedbackAPIView(APIView):
 
 
 
-
-# def serch(): #реализация поиска на сайте
+class CityListAPIView(generics.ListAPIView):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
