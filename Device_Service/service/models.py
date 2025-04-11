@@ -1,5 +1,3 @@
-from datetime import date
-
 from django.db import models
 
 # DeviceType - тип устройства (смартфон, ноутбук и т.д.)
@@ -10,8 +8,8 @@ class DeviceType(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
-# Device — конкретное устройство клиента
-class Device(models.Model):
+# Device_model — конкретное устройство клиента
+class Device_model(models.Model):
     type = models.ForeignKey(DeviceType, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     model = models.CharField(max_length=50)
