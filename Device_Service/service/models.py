@@ -21,6 +21,13 @@ class Feedback(models.Model):
     phone = models.DecimalField(max_digits=10, decimal_places=0) #телефон
     message = models.TextField() #сообщение
 
+    city = models.ForeignKey('City', on_delete=models.SET_NULL, null=True, blank=True)
+
+    reply = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.city})"
+
     # ниже строки под вопросом добавления
 
     # created_at = models.DateTimeField(auto_now_add=True) #дата создания
@@ -29,7 +36,11 @@ class Feedback(models.Model):
 
 
 
+class City(models.Model):
+    name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
 
 
 
