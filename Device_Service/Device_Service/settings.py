@@ -158,8 +158,8 @@ MANAGER_EMAIL = 'manager@example.com'
 """
 Отправка заявок  через Telegram
 """
-TELEGRAM_BOT_TOKEN = '8035045792:AAEFahbPT7YujMkroyK87XDbGzRVKSgZ-RM'
-TELEGRAM_CHAT_ID = '908977119'
+TELEGRAM_BOT_TOKEN = ''
+TELEGRAM_CHAT_ID = ''
 
 
 
