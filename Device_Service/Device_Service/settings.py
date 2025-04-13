@@ -38,8 +38,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'service',
+    'rest_framework',
     'drf_yasg'
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',  # для визуального API
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ],
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,11 +139,27 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
+
+
+# Отправка заявок на электронную почту
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' #тут заменить почту на существующую
-EMAIL_HOST = 'smtp.example.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your@email.com'
-EMAIL_HOST_PASSWORD = 'your-password'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-ADMIN_EMAIL = 'your-admin@email.com'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'your_email@example.com'
+EMAIL_HOST_PASSWORD = 'your_app_password'
+
+# Кому слать уведомления
+MANAGER_EMAIL = 'manager@example.com'
+
+
+"""
+Отправка заявок  через Telegram
+"""
+TELEGRAM_BOT_TOKEN = '8035045792:AAEFahbPT7YujMkroyK87XDbGzRVKSgZ-RM'
+TELEGRAM_CHAT_ID = '908977119'
+
+
+
